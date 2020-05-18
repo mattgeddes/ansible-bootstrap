@@ -3,7 +3,6 @@ galaxy_info:
   description: An Ansible role to prep a new node for management from Ansible
   license: Apache-2.0
   min_ansible_version: 2.0
-  platforms:
-    - all
+  # platforms: []
   galaxy_tags: ["ansible", "bootstrap"]
 dependencies: []

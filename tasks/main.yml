@@ -1,0 +1,23 @@
+---
+- name: Ansible management user
+  user:
+      name: "{{ orchestration_user }}"
+      state: present
+      shell: "/bin/bash"
+      comment: "Ansible Orchestration"
+- name: Trusted OpenSSH public key
+  authorized_key:
+      user: "{{ orchestration_user }}"
+      state: present
+      key: "{{ orchestration_pubkey }}"
+- name: Passwordless sudo
+  lineinfile:
+      path: "/etc/sudoers.d/{{ orchestration_user }}"
+      line: "{{ orchestration_user }}        ALL=(ALL:ALL) NOPASSWD: ALL"
+      create: true
+      validate: /usr/sbin/visudo -cf %s
+- name: Package dependencies
+  package:
+      name:
+          - python
+          - sudo

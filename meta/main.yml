@@ -1,4 +1,3 @@
----
 galaxy_info:
   author: Matthew Geddes
   description: An Ansible role to prep a new node for management from Ansible
